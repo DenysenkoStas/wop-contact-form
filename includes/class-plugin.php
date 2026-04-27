@@ -17,5 +17,11 @@ class WOP_CF_Plugin {
 	public function init() {
 		(new WOP_CF_Shortcode())->register();
 		(new WOP_CF_Assets())->register();
+
+		$ajax_handler = new WOP_CF_Ajax_Handler(
+			new WOP_CF_Form_Validator(),
+			new WOP_CF_Submission_Repository()
+		);
+		$ajax_handler->register();
 	}
 }

@@ -207,6 +207,55 @@
       return;
     }
 
-    showMessage(messageBox, 'success', 'Form is valid (AJAX will be wired up next).');
+    const submitBtn = form.querySelector('.wop-cf-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = i18n.sending || 'Sending…';
+
+    const formData = new FormData(form);
+    formData.append('action', config.action);
+    formData.append('nonce', config.nonce);
+
+    fetch(config.ajaxUrl, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    })
+      .then(function (response) {
+        return response.json().then(function (body) {
+          return {ok: response.ok, body: body};
+        });
+      })
+      .then(function (result) {
+        if (result.ok && result.body && result.body.success) {
+          form.reset();
+          clearAllFieldErrors(form);
+          const previewEl = form.querySelector('[data-file-preview]');
+          clearPreview(previewEl);
+          showMessage(messageBox, 'success', result.body.data.message);
+        } else {
+          const data = (result.body && result.body.data) || {};
+          if (data.errors) {
+            showFieldErrors(form, data.errors);
+          }
+          showMessage(messageBox, 'error', data.message || i18n.genericError);
+        }
+      })
+      .catch(function () {
+        showMessage(messageBox, 'error', i18n.genericError);
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
+  }
+
+  function clearAllFieldErrors(form) {
+    form.querySelectorAll('.wop-cf-field').forEach(function (field) {
+      field.classList.remove('has-error');
+    });
+    form.querySelectorAll('.wop-cf-error').forEach(function (el) {
+      el.textContent = '';
+    });
   }
 })();
