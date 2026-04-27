@@ -1,0 +1,215 @@
+.wop-cf-wrapper {
+  --wop-cf-primary: #38b6e0;
+  --wop-cf-primary-hover: #2a9bc4;
+  --wop-cf-text: #1a2332;
+  --wop-cf-label: #4a5568;
+  --wop-cf-border: #e2e8f0;
+  --wop-cf-border-focus: #38b6e0;
+  --wop-cf-error: #e53e3e;
+  --wop-cf-bg-field: #f7fafc;
+  --wop-cf-bg-card: #ffffff;
+  --wop-cf-radius: 8px;
+
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  background: var(--wop-cf-bg-card);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--wop-cf-text);
+  box-sizing: border-box;
+}
+
+.wop-cf-wrapper *,
+.wop-cf-wrapper *::before,
+.wop-cf-wrapper *::after {
+  box-sizing: border-box;
+}
+
+.wop-cf-title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--wop-cf-text);
+}
+
+.wop-cf-field {
+  margin-bottom: 16px;
+}
+
+.wop-cf-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--wop-cf-label);
+}
+
+.wop-cf-field input,
+.wop-cf-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--wop-cf-text);
+  background: var(--wop-cf-bg-field);
+  border: 1px solid var(--wop-cf-border);
+  border-radius: var(--wop-cf-radius);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wop-cf-field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.wop-cf-field input:focus,
+.wop-cf-field textarea:focus {
+  border-color: var(--wop-cf-border-focus);
+  box-shadow: 0 0 0 3px rgba(56, 182, 224, 0.15);
+}
+
+.wop-cf-field.has-error input,
+.wop-cf-field.has-error textarea {
+  border-color: var(--wop-cf-error);
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.wop-cf-error {
+  display: none;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--wop-cf-error);
+}
+
+.wop-cf-field.has-error .wop-cf-error {
+  display: block;
+}
+
+.wop-cf-dropzone {
+  margin: 24px 0 20px;
+  padding: 24px;
+  background: var(--wop-cf-bg-field);
+  border: 1px solid var(--wop-cf-border);
+  border-radius: var(--wop-cf-radius);
+  text-align: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wop-cf-dropzone.is-dragover {
+  border-color: var(--wop-cf-primary);
+  background: rgba(56, 182, 224, 0.05);
+}
+
+.wop-cf-dropzone-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.wop-cf-dropzone-icon {
+  color: var(--wop-cf-primary);
+  margin-bottom: 4px;
+}
+
+.wop-cf-dropzone-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--wop-cf-primary);
+}
+
+.wop-cf-dropzone-hint {
+  font-size: 13px;
+  color: var(--wop-cf-label);
+}
+
+.wop-cf-file-preview {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--wop-cf-text);
+}
+
+.wop-cf-file-preview .wop-cf-file-remove {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: var(--wop-cf-error);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+}
+
+.wop-cf-submit {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  background: var(--wop-cf-primary);
+  border: none;
+  border-radius: var(--wop-cf-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.wop-cf-submit:hover:not(:disabled) {
+  background: var(--wop-cf-primary-hover);
+}
+
+.wop-cf-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secure note */
+.wop-cf-secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--wop-cf-label);
+}
+
+.wop-cf-secure svg {
+  color: var(--wop-cf-label);
+  flex-shrink: 0;
+}
+
+.wop-cf-message {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: var(--wop-cf-radius);
+  font-size: 14px;
+}
+
+.wop-cf-message.is-success {
+  background: #f0fff4;
+  color: #276749;
+  border: 1px solid #c6f6d5;
+}
+
+.wop-cf-message.is-error {
+  background: #fff5f5;
+  color: #c53030;
+  border: 1px solid #fed7d7;
+}
+
+@media (max-width: 480px) {
+  .wop-cf-wrapper {
+    padding: 24px 16px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .wop-cf-title {
+    font-size: 20px;
+  }
+}

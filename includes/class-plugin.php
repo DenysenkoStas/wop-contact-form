@@ -16,5 +16,6 @@ class WOP_CF_Plugin {
 	 */
 	public function init() {
 		(new WOP_CF_Shortcode())->register();
+		(new WOP_CF_Assets())->register();
 	}
 }
