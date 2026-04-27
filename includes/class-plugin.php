@@ -15,6 +15,6 @@ class WOP_CF_Plugin {
 	 * Wire up plugin components and register hooks.
 	 */
 	public function init() {
-
+		(new WOP_CF_Shortcode())->register();
 	}
 }
