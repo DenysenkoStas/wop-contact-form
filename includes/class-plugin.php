@@ -24,5 +24,7 @@ class WOP_CF_Plugin {
 			new WOP_CF_File_Uploader()
 		);
 		$ajax_handler->register();
+
+		(new WOP_CF_Admin_Page(new WOP_CF_Submission_Repository()))->register();
 	}
 }
