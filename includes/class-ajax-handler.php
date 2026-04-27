@@ -26,12 +26,19 @@ class WOP_CF_Ajax_Handler {
 	 */
 	private $repository;
 
+	/**
+	 * @var WOP_CF_File_Uploader
+	 */
+	private $file_uploader;
+
 	public function __construct(
 		WOP_CF_Form_Validator $validator,
-		WOP_CF_Submission_Repository $repository
+		WOP_CF_Submission_Repository $repository,
+		WOP_CF_File_Uploader $file_uploader
 	) {
-		$this->validator  = $validator;
-		$this->repository = $repository;
+		$this->validator     = $validator;
+		$this->repository    = $repository;
+		$this->file_uploader = $file_uploader;
 	}
 
 	public function register() {
@@ -64,8 +71,23 @@ class WOP_CF_Ajax_Handler {
 			);
 		}
 
-		// 3. File upload will be wired up in the next step.
+		// 3. Optional file upload via WP media mechanism.
 		$attachment_id = null;
+		if ( ! empty($_FILES['photo']['name'])) {
+			$upload_result = $this->file_uploader->upload('photo');
+
+			if (is_wp_error($upload_result)) {
+				wp_send_json_error(
+					array(
+						'message' => __('Please correct the highlighted fields.', 'wop-contact-form'),
+						'errors'  => array('photo' => $upload_result->get_error_message()),
+					),
+					422
+				);
+			}
+
+			$attachment_id = $upload_result;
+		}
 
 		// 4. Persist to DB.
 		$submission_id = $this->repository->insert($result['data'], $attachment_id);

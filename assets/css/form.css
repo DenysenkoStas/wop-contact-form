@@ -103,6 +103,16 @@
   background: rgba(56, 182, 224, 0.05);
 }
 
+.wop-cf-dropzone.has-error {
+  border-color: var(--wop-cf-error);
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.wop-cf-dropzone.has-error .wop-cf-error {
+  display: block;
+  margin-top: 8px;
+}
+
 .wop-cf-dropzone-label {
   display: flex;
   flex-direction: column;
@@ -167,7 +177,6 @@
   cursor: not-allowed;
 }
 
-/* Secure note */
 .wop-cf-secure {
   display: flex;
   align-items: center;

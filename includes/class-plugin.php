@@ -20,7 +20,8 @@ class WOP_CF_Plugin {
 
 		$ajax_handler = new WOP_CF_Ajax_Handler(
 			new WOP_CF_Form_Validator(),
-			new WOP_CF_Submission_Repository()
+			new WOP_CF_Submission_Repository(),
+			new WOP_CF_File_Uploader()
 		);
 		$ajax_handler->register();
 	}

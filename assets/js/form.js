@@ -145,8 +145,8 @@
   }
 
   function showFieldErrors(form, errors) {
-    form.querySelectorAll('.wop-cf-field').forEach(function (field) {
-      field.classList.remove('has-error');
+    form.querySelectorAll('.wop-cf-field, .wop-cf-dropzone').forEach(function (el) {
+      el.classList.remove('has-error');
     });
 
     Object.keys(errors).forEach(function (name) {
@@ -251,8 +251,8 @@
   }
 
   function clearAllFieldErrors(form) {
-    form.querySelectorAll('.wop-cf-field').forEach(function (field) {
-      field.classList.remove('has-error');
+    form.querySelectorAll('.wop-cf-field, .wop-cf-dropzone').forEach(function (el) {
+      el.classList.remove('has-error');
     });
     form.querySelectorAll('.wop-cf-error').forEach(function (el) {
       el.textContent = '';

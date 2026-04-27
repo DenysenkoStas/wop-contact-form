@@ -6,7 +6,7 @@
  */
 
 if ( ! defined('ABSPATH')) {
-	exit;
+  exit;
 }
 ?>
 <div class="wop-cf-wrapper">
@@ -44,7 +44,7 @@ if ( ! defined('ABSPATH')) {
     </div>
 
     <div class="wop-cf-dropzone" data-dropzone>
-      <input type="file" id="wop-cf-file" name="photo" accept="image/jpeg,image/png,image/webp" hidden>
+      <input type="file" id="wop-cf-file" name="photo" accept="image/jpeg,image/png" hidden>
       <label for="wop-cf-file" class="wop-cf-dropzone-label">
         <svg class="wop-cf-dropzone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -57,6 +57,7 @@ if ( ! defined('ABSPATH')) {
           class="wop-cf-dropzone-hint"><?php esc_html_e('Drag & drop or click to browse', 'wop-contact-form'); ?></span>
       </label>
       <div class="wop-cf-file-preview" data-file-preview hidden></div>
+      <span class="wop-cf-error" data-error-for="photo"></span>
     </div>
 
     <button type="submit" class="wop-cf-submit"><?php esc_html_e('Get My Quote', 'wop-contact-form'); ?></button>
