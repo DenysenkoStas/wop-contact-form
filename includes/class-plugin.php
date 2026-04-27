@@ -9,10 +9,12 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
-/**
- * Class WOP_CF_Plugin
- */
 class WOP_CF_Plugin {
+
+	/**
+	 * Wire up plugin components and register hooks.
+	 */
 	public function init() {
+
 	}
 }

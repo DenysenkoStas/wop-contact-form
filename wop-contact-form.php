@@ -16,7 +16,6 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
-// Plugin constants.
 define('WOP_CF_VERSION', '0.1.0');
 define('WOP_CF_PLUGIN_FILE', __FILE__);
 define('WOP_CF_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -46,8 +45,12 @@ spl_autoload_register(
 	}
 );
 
+// Activation/deactivation hooks must live in the main plugin file (WP core requirement).
+register_activation_hook(__FILE__, array('WOP_CF_Activator', 'activate'));
+register_deactivation_hook(__FILE__, array('WOP_CF_Deactivator', 'deactivate'));
+
 /**
- * Bootstrap the plugin.
+ * Initialize the plugin on plugins_loaded.
  */
 function wop_cf_init() {
 	$plugin = new WOP_CF_Plugin();
